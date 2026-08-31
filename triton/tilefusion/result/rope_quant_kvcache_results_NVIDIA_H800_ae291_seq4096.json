@@ -1,0 +1,98 @@
+[
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "CUDA",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.122,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  },
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "Triton_fused",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.117,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  },
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "Triton_baseline",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.127,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  },
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "Torch",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.662,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  },
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "Dynamo",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.558,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  },
+  {
+    "hw": "NVIDIA_H800",
+    "type": "op",
+    "method": "TensorRT",
+    "op": "rope_quant_kvcache",
+    "seqlen": 4096,
+    "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+    "shape": "[128,4096,64,512,16]",
+    "time": "ms",
+    "avg": 0.504,
+    "best_cfg": {
+      "BM": 128,
+      "num_warps": 4,
+      "num_stages": 2
+    }
+  }
+]

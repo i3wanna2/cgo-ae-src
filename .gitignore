@@ -1,0 +1,41 @@
+# Conda / toolchain (rebuild via README.md)
+miniconda3/
+.triton/
+
+# Build artifacts — keep full triton/ and FlashTensor-AE/ source trees
+triton/build/
+FlashTensor-AE/build/
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+**/.eggs/
+**/*.so
+**/*.o
+**/*.a
+
+# Triton / AE caches and engines (not required to rebuild)
+triton/*.engine
+triton/*.onnx
+triton/*.onnx.data
+triton/tvm_tuned_*/
+triton/tvm_ms_database/
+triton/out/
+triton/tuning_results.json
+triton/compile_commands.json
+FlashTensor-AE/tvm_ms_database/
+FlashTensor-AE/llvm-project/
+.pkl_memoize_py3/
+
+# Experiment docs / outputs
+ae/ENV.md
+ae/**/logs/
+ae/**/results/
+ae/**/*.pdf
+ae/**/*.log
+*.log
+
+# Editor / VCS noise
+.DS_Store
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/

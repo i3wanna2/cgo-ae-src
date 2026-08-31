@@ -1,0 +1,4 @@
+{"hw": "NVIDIA_H800_80GB_HBM3", "method": "naive", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 10.251}
+{"hw": "NVIDIA_H800_80GB_HBM3", "method": "kernel-fusion", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 19.8871}
+{"hw": "NVIDIA_H100_80GB_HBM3", "method": "compilation-opt", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 2.0094}
+{"hw": "NVIDIA_H100_80GB_HBM3", "method": "parameter-tuning", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 1.7939}

@@ -1,0 +1,2352 @@
+[
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5729,
+    "real_time": 6.54
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 7.31
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 9.55
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 11.03
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 12.98
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 14.17
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 15.37
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 16.99
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 18.08
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 19.18
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 21.11
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 21.46
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.5631,
+    "real_time": 22.64
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.0345,
+    "real_time": 24.3
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 2.0345,
+    "real_time": 26.58
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 27.59
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 27.91
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 28.96
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 29.27
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 31.34
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 32.73
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 33.06
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 34.84
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 35.96
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 36.29
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 37.78
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 38.88
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 39.13
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "graph",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 39.45
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.44
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.46
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.48
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.5
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.54
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.58
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.62
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.66
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.68
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.7
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.72
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.74
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.77
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.79
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.82
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.85
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.86
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.88
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.9
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.93
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.95
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.97
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.98
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 53.99
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.0
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.01
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.03
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.05
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.07
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.09
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.1
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.11
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.12
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.14
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.15
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.17
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.19
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.21
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.22
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.23
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.25
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.27
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.28
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.29
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.3
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.31
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.33
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.34
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.35
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.36
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.37
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.38
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.4
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.41
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.42
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.43
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.44
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.45
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.47
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.49
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.5
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 54.51
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.72
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.76
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.79
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.83
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.87
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.9
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.93
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9626,
+    "real_time": 66.97
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9352,
+    "real_time": 67.0
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9352,
+    "real_time": 67.03
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9352,
+    "real_time": 67.07
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9352,
+    "real_time": 67.11
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9352,
+    "real_time": 67.14
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9166,
+    "real_time": 67.17
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9166,
+    "real_time": 67.2
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.9166,
+    "real_time": 67.24
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8622,
+    "real_time": 67.27
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.29
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.33
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.38
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.41
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.43
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.46
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.5
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.54
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.57
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.61
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.64
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.68
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.71
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.74
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.78
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.8
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.83
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.87
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.9
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.93
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.96
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 67.99
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 68.02
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 68.05
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 68.09
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 68.14
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8403,
+    "real_time": 68.18
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.21
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.24
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.28
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.32
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.36
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.4
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.44
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.48
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.52
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.56
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.59
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.63
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.67
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.71
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.74
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.8
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.83
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.86
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.9
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 68.94
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.0
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.07
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.14
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.21
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.25
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.28
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.32
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 69.36
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.1
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.13
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.15
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.17
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.21
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.24
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.28
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.31
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.33
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.35
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.37
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.38
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.42
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.45
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.49
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.52
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.54
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.55
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.57
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.59
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.62
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.65
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.68
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.72
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.73
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.74
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.75
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.76
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.79
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.81
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.83
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.8336,
+    "real_time": 71.85
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.86
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.87
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.88
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.89
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.91
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.93
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.95
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7936,
+    "real_time": 71.96
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 71.97
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 71.98
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 71.99
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.0
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.02
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.03
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.05
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.07
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.08
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.09
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.1
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.11
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.13
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.14
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.15
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.16
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.17
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.18
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.2
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.21
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.22
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.23
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.24
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7853,
+    "real_time": 72.25
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7506,
+    "real_time": 72.25
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7503,
+    "real_time": 72.26
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7503,
+    "real_time": 72.27
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7502,
+    "real_time": 72.28
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7502,
+    "real_time": 72.29
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7502,
+    "real_time": 72.3
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7502,
+    "real_time": 72.31
+  },
+  {
+    "hw": "NVIDIA_H800_80GB_HBM3",
+    "method": "parameter-tuning",
+    "type": "op",
+    "op": "kf",
+    "seqlen": 4096,
+    "shape": "[1,32,4096,128]",
+    "avg": 1.7502,
+    "real_time": 72.32
+  }
+]

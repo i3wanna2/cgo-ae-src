@@ -1,0 +1,4 @@
+{"hw": "NVIDIA_A100-SXM4-40GB", "method": "naive", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 21.984}
+{"hw": "NVIDIA_A100-SXM4-40GB", "method": "kernel-fusion", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 55.8244}
+{"hw": "NVIDIA_A100-SXM4-40GB", "method": "compilation-opt", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 3.730}
+{"hw": "NVIDIA_A100-SXM4-40GB", "method": "parameter-tuning", "type": "op", "op": "kf", "seqlen": 4096, "shape": "[1,32,4096,128]", "avg": 3.245}

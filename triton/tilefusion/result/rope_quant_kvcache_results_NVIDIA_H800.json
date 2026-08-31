@@ -1,0 +1,578 @@
+[
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.019,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.022,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.049,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.227,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.173,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.1,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.019,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.023,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.05,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.228,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.179,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.101,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.02,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.024,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.049,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.228,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.181,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.103,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.035,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.04,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.05,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.247,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.202,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.108,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.066,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.06,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.068,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.394,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.306,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.15,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.124,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.12,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.13,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.657,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.506,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.232,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    }
+]

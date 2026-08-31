@@ -1,0 +1,200 @@
+[
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.022
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.032
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.051
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.018
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.035
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.047
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.028
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.045
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.05
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.043
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.063
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.069
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.078
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.087
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.094
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.135
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.162
+    },
+    {
+        "hw": "NVIDIA_H800",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.17
+    }
+]

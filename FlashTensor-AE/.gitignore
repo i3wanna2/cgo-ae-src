@@ -1,0 +1,18 @@
+ae_logs/
+
+_TensorRT-LLM
+*.engine
+*.gv
+*.pdf
+
+__pycache__/
+*.egg-info
+*.so
+build
+
+*_venv
+
+
+# tvm
+logs/
+database_*.json

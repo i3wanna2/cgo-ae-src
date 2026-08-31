@@ -1,0 +1,578 @@
+[
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.074,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.087,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.202,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.948,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.706,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 128,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,128,64,512,16]",
+        "time": "ms",
+        "avg": 0.432,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 16,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.076,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.09,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.204,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.998,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.754,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 256,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,256,64,512,16]",
+        "time": "ms",
+        "avg": 0.431,
+        "best_cfg": {
+            "BM": 64,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.072,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.088,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.2,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.972,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.727,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 512,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,512,64,512,16]",
+        "time": "ms",
+        "avg": 0.441,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 16,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.073,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.121,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.207,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.985,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.787,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 1024,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,1024,64,512,16]",
+        "time": "ms",
+        "avg": 0.458,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 2
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.141,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.152,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.207,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 1.029,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.751,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 2048,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,2048,64,512,16]",
+        "time": "ms",
+        "avg": 0.475,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 3
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "CUDA",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.265,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_fused",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.268,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Triton_baseline",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.285,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Torch",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 1.257,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "Dynamo",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 1.161,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    },
+    {
+        "hw": "NVIDIA_A100-SXM4-40GB",
+        "type": "op",
+        "method": "TensorRT",
+        "op": "rope_quant_kvcache",
+        "seqlen": 4096,
+        "shape_meaning": "num_q_heads,num_tokens,rot_dim,kv_lora_rank,block_size",
+        "shape": "[128,4096,64,512,16]",
+        "time": "ms",
+        "avg": 0.606,
+        "best_cfg": {
+            "BM": 128,
+            "num_warps": 4,
+            "num_stages": 1
+        }
+    }
+]

@@ -1,0 +1,841 @@
+model='kf' system='our' seqlen=4096 layer_num=None mode='kernel' check=False
+input_names=['q', 'k', 'v', 'exp_rand']
+output_names=['out', 'kf_score']
+Compiling KeyFormer kernel...
+Compiling 'our' system for B=1, S=4096, H=32, D=128
+  Added InputNode[0]: Q
+  Added InputNode[1]: K
+  Added InputNode[2]: V
+  Added InputNode[3]: Mask
+  Added InputNode[4]: ExpRand
+  Added ComputeNode[5]: gemm_qk, parents=[0:Q, 1:K]
+  Added ComputeNode[6]: scale_c, parents=[5:gemm_qk]
+  Added ComputeNode[7]: add_mask, parents=[6:scale_c, 3:Mask]
+  Added ComputeNode[8]: softmax, parents=[7:add_mask]
+  Added ComputeNode[9]: gemm_pv, parents=[8:softmax, 2:V]
+  Added ComputeNode[10]: log_neg, parents=[4:ExpRand]
+  Added ComputeNode[11]: add_mask, parents=[7:add_mask, 10:log_neg]
+  Added ComputeNode[12]: scale_c, parents=[11:add_mask]
+  Added ComputeNode[13]: softmax, parents=[12:scale_c]
+  Added ComputeNode[14]: sum_h2o, parents=[13:softmax]
+  Added OutputNode: 'attn_output' <- [9:gemm_pv].output, shape=(1, 32, 4096, 128)
+  Added OutputNode: 'kf_score' <- [14:sum_h2o].output, shape=(1, 32, 4096)
+
+  Processing partition 1/26: [gemm_qk] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 2
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 2/26: [gemm_ngrid] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 2
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 3/26: [gemm_qk] | [scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 2
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 4/26: [gemm_qk] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 2
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 5/26: [gemm_qk,scale_c] | [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 1
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 6/26: [gemm_qk,scale_c] | [add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 1
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 7/26: [gemm_qk,scale_c] | [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 1
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 8/26: [gemm_qk,scale_c,add_mask] | [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 0
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 9/26: [gemm_qk,scale_c,add_mask] | [softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 0
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 10/26: [gemm_qk,scale_c,add_mask] | [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ No softmax found in previous subgraph
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 0
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 11/26: [gemm_qk,scale_c,add_mask,softmax] | [gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ⚡ Need recomputation: gemm_pv -> softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 8
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+    ✗ Partition invalid (grid mismatch)
+
+  Processing partition 12/26: [gemm_qk,scale_c,add_mask,softmax_store] | [gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax_store' at position 3
+  ⚡ Need recomputation: gemm_pv -> softmax_store
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 8
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+    ✗ Partition invalid (grid mismatch)
+
+  Processing partition 13/26: [gemm_qk,scale_c,add_mask,softmax] | [gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ⚡ Need recomputation: gemm_pv -> softmax
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 8
+  ⚡ Need recomputation: sum_h2o -> softmax_store
+======================================================================
+
+    ✓ Partition added to search space
+    ✗ Partition invalid (grid mismatch)
+
+  Processing partition 14/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ⚡ Dependency: add_mask -> add_mask
+
+  ✅ Recomputation NEEDED and VALID
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 3
+
+  ✅ Recomputation NOT needed
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 6
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+    ✓ Partition added to search space
+
+  Processing partition 15/26: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv] | [log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax_store' at position 3
+  ⚡ Dependency: add_mask -> add_mask
+
+  ✅ Recomputation NEEDED and VALID
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 3
+
+  ✅ Recomputation NOT needed
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 6
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+    ✓ Partition added to search space
+
+  Processing partition 16/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ⚡ Dependency: add_mask -> add_mask
+
+  ✅ Recomputation NEEDED and VALID
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 3
+
+  ✅ Recomputation NOT needed
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 6
+  ⚡ Need recomputation: sum_h2o -> softmax_store
+======================================================================
+
+    ✓ Partition added to search space
+    ✓ Partition added to search space
+
+  Processing partition 17/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] | [add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 2
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 18/26: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg] | [add_mask,scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax_store' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 2
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 19/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] | [add_mask,scale_c,softmax_store] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 2
+  ⚡ Need recomputation: sum_h2o -> softmax_store
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 20/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] | [scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 1
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 21/26: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask] | [scale_c,softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax_store' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 1
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 22/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] | [scale_c,softmax_store] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 1
+  ⚡ Need recomputation: sum_h2o -> softmax_store
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 23/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] | [softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 0
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 24/26: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c] | [softmax] | [sum_h2o]
+  ✓ Found softmax 'softmax_store' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax' at position 0
+  ⚡ Need recomputation: sum_h2o -> softmax
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 25/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] | [softmax_mgrid] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax_mgrid' at position 0
+  ⚡ Need recomputation: sum_h2o -> softmax_mgrid
+======================================================================
+
+    ✓ Partition added to search space
+
+  Processing partition 26/26: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] | [softmax_store] | [sum_h2o]
+  ✓ Found softmax 'softmax' at position 3
+  ✓ No dependency on previous subgraph's softmax
+======================================================================
+
+  ✓ Found softmax 'softmax_store' at position 0
+  ⚡ Need recomputation: sum_h2o -> softmax_store
+======================================================================
+
+    ✓ Partition added to search space
+
+======================================================================
+🚀 Phase 1: Fast Partition Search (Top-1)
+======================================================================
+    🔍 Tuning Subgraph 0: [gemm_qk] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5786 ms
+    🔍 Tuning Subgraph 1: [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.6103 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3801 ms
+    🔍 Tuning Subgraph 0: [gemm_ngrid] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5287 ms
+    🔍 Tuning Subgraph 1: [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.6104 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3772 ms
+    🔍 Tuning Subgraph 0: [gemm_qk] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5779 ms
+    🔍 Tuning Subgraph 1: [scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.6134 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3827 ms
+    🔍 Tuning Subgraph 0: [gemm_qk] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5776 ms
+    🔍 Tuning Subgraph 1: [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.6138 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3827 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5137 ms
+    🔍 Tuning Subgraph 1: [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 3.6988 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3804 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5097 ms
+    🔍 Tuning Subgraph 1: [add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 3.6980 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3851 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.5103 ms
+    🔍 Tuning Subgraph 1: [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 3.6801 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3819 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1029 ms
+    🔍 Tuning Subgraph 1: [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.4862 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3802 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1027 ms
+    🔍 Tuning Subgraph 1: [softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.4886 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3812 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1044 ms
+    🔍 Tuning Subgraph 1: [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.5454 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3851 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.2415 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 2.5557 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3825 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.2423 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 2.5512 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3800 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.2425 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax_store] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 2.5518 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3807 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3414 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1695 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3801 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3402 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7782 ms
+    🔍 Tuning Subgraph 2: [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.9521 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3425 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1675 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3817 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3423 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7752 ms
+    🔍 Tuning Subgraph 2: [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.9476 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3406 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_store] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.1810 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3853 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3404 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7835 ms
+    🔍 Tuning Subgraph 2: [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.9486 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.4439 ms
+    🔍 Tuning Subgraph 1: [add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7374 ms
+    🔍 Tuning Subgraph 2: [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7303 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.4514 ms
+    🔍 Tuning Subgraph 1: [add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7347 ms
+    🔍 Tuning Subgraph 2: [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7239 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.4404 ms
+    🔍 Tuning Subgraph 1: [add_mask,scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7409 ms
+    🔍 Tuning Subgraph 2: [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.7343 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8219 ms
+    🔍 Tuning Subgraph 1: [scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3596 ms
+    🔍 Tuning Subgraph 2: [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4311 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8351 ms
+    🔍 Tuning Subgraph 1: [scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3602 ms
+    🔍 Tuning Subgraph 2: [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4288 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8165 ms
+    🔍 Tuning Subgraph 1: [scale_c,softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3621 ms
+    🔍 Tuning Subgraph 2: [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4307 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8244 ms
+    🔍 Tuning Subgraph 1: [softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3594 ms
+    🔍 Tuning Subgraph 2: [softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4272 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8491 ms
+    🔍 Tuning Subgraph 1: [softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3599 ms
+    🔍 Tuning Subgraph 2: [softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4275 ms
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8251 ms
+    🔍 Tuning Subgraph 1: [softmax_reduce_topk] (1 configs)
+      ⚠️ Config 0 failed: register_standard_kernels.<locals>.<lambda>() missing 1 required positional argument: 'TopK'
+      ❌ All configs failed for subgraph 1
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 1.8235 ms
+    🔍 Tuning Subgraph 1: [softmax_reduce] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3595 ms
+    🔍 Tuning Subgraph 2: [softmax_recompute_ngrid,sum_h2o] (1 configs)
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.4242 ms
+
+📈 Phase 1 Tuning Log:
+======================================================================
+  [2.13s] 2.5690 ms
+  [3.25s] 2.5162 ms
+  [4.28s] 2.5162 ms
+  [5.28s] 2.5162 ms
+  [6.53s] 2.5162 ms
+  [7.87s] 2.5162 ms
+  [9.15s] 2.5162 ms
+  [10.43s] 2.5162 ms
+  [11.64s] 2.5162 ms
+  [13.35s] 2.5162 ms
+  [14.77s] 2.5162 ms
+  [16.10s] 2.5162 ms
+  [17.53s] 2.5162 ms
+  [18.93s] 1.8910 ms
+  [20.72s] 1.8910 ms
+  [22.46s] 1.8910 ms
+  [24.36s] 1.8910 ms
+  [25.70s] 1.8910 ms
+  [27.44s] 1.8910 ms
+  [28.89s] 1.8910 ms
+  [30.44s] 1.8910 ms
+  [31.80s] 1.8910 ms
+  [33.23s] 1.8910 ms
+  [34.54s] 1.8910 ms
+  [35.81s] 1.8910 ms
+  [36.99s] 1.8910 ms
+  [38.65s] 1.8910 ms
+  [39.57s] 1.8910 ms
+  [40.77s] 1.8910 ms
+
+📊 Phase 1 Ranking (Fast Pass):
+  Rank 1: 1.8910 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 2: 1.8916 ms | [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 3: 1.9069 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  Rank 4: 2.0651 ms | [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] | [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 5: 2.0705 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] | [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 6: 2.0724 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax_reduce] | [gemm_ngrid,scale_c_ngrid,add_mask_ngrid,log_neg_ngrid,add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 7: 2.5162 ms | [gemm_ngrid] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 8: 2.5690 ms | [gemm_qk] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 9: 2.5741 ms | [gemm_qk] | [scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 10: 2.5741 ms | [gemm_qk] | [scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  Rank 11: 2.6072 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] | [softmax_reduce] | [softmax_recompute_ngrid,sum_h2o]
+  Rank 12: 2.6094 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] | [scale_c,softmax_reduce] | [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 13: 2.6109 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c] | [softmax_reduce] | [softmax_recompute_ngrid,sum_h2o]
+  Rank 14: 2.6126 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg,add_mask] | [scale_c,softmax_reduce] | [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 15: 2.6241 ms | [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask] | [scale_c,softmax_reduce] | [scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 16: 2.6365 ms | [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c] | [softmax_reduce] | [softmax_recompute_ngrid,sum_h2o]
+  Rank 17: 2.9100 ms | [gemm_qk,scale_c,add_mask,softmax_store,gemm_pv,log_neg] | [add_mask,scale_c,softmax_reduce] | [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 18: 2.9116 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] | [add_mask,scale_c,softmax_reduce] | [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 19: 2.9156 ms | [gemm_qk,scale_c,add_mask,softmax,gemm_pv,log_neg] | [add_mask,scale_c,softmax_reduce] | [add_mask_ngrid,scale_c_ngrid,softmax_recompute_ngrid,sum_h2o]
+  Rank 20: 2.9693 ms | [gemm_qk,scale_c,add_mask] | [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 21: 2.9726 ms | [gemm_qk,scale_c,add_mask] | [softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 22: 3.0349 ms | [gemm_qk,scale_c,add_mask] | [softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  Rank 23: 3.1735 ms | [gemm_qk,scale_c,add_mask,softmax_reduce] | [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 24: 3.1750 ms | [gemm_qk,scale_c,add_mask,softmax_reduce] | [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  Rank 25: 3.1797 ms | [gemm_qk,scale_c,add_mask,softmax_reduce] | [gemm_qk,scale_c,add_mask,softmax_recompute_mgrid,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 26: 4.5722 ms | [gemm_qk,scale_c] | [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax_store] | [sum_h2o]
+  Rank 27: 4.5928 ms | [gemm_qk,scale_c] | [add_mask,softmax_store,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+  Rank 28: 4.5929 ms | [gemm_qk,scale_c] | [add_mask,softmax,gemm_pv,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+
+Selected Top-1 partitions for full profiling.
+
+======================================================================
+🔥 Phase 2: Full Profiling
+======================================================================
+
+📈 Phase 2 Starting Point: Best Partition from Phase 1 = 1.8910 ms
+   Subgraph times: ['0.3414', '1.1695', '0.3801']
+
+======================================================================
+Testing Partition 1/1
+======================================================================
+Strategy: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+Subgraphs: 3
+    🔍 Tuning Subgraph 0: [gemm_qk,scale_c,add_mask,softmax,gemm_pv] (72 configs)
+      ... progress: 10/72 configs tested
+      ... progress: 20/72 configs tested
+      ... progress: 30/72 configs tested
+      ... progress: 40/72 configs tested
+      ... progress: 50/72 configs tested
+      ... progress: 60/72 configs tested
+      ... progress: 70/72 configs tested
+      ✅ Best: BM=64, BN=64, W=4, S=3 -> 0.3372 ms
+    🔍 Tuning Subgraph 1: [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] (72 configs)
+      ... progress: 10/72 configs tested
+      ... progress: 20/72 configs tested
+      ... progress: 30/72 configs tested
+      ... progress: 40/72 configs tested
+      ... progress: 50/72 configs tested
+      ... progress: 60/72 configs tested
+      ... progress: 70/72 configs tested
+      ✅ Best: BM=32, BN=128, W=4, S=3 -> 1.0724 ms
+    🔍 Tuning Subgraph 2: [sum_h2o] (72 configs)
+      ... progress: 10/72 configs tested
+      ... progress: 20/72 configs tested
+      ... progress: 30/72 configs tested
+      ... progress: 40/72 configs tested
+      ... progress: 50/72 configs tested
+      ... progress: 60/72 configs tested
+      ... progress: 70/72 configs tested
+      ✅ Best: BM=128, BN=128, W=4, S=5 -> 0.3445 ms
+
+  ⏱️  Total Partition Time: 1.7540 ms
+  ✓ New best!
+
+📈 Phase 2 Tuning Log:
+======================================================================
+  Starting: 1.8910 ms
+  [41.12s] 1.8910 ms
+  [41.46s] 1.8910 ms
+  [41.82s] 1.8910 ms
+  [42.47s] 1.8910 ms
+  [42.82s] 1.8910 ms
+  [43.13s] 1.8910 ms
+  [43.45s] 1.8910 ms
+  [43.78s] 1.8910 ms
+  [44.16s] 1.8910 ms
+  [44.56s] 1.8910 ms
+  [44.99s] 1.8910 ms
+  [45.46s] 1.8910 ms
+  [45.79s] 1.8910 ms
+  [46.49s] 1.8910 ms
+  [46.87s] 1.8910 ms
+  [47.23s] 1.8910 ms
+  [47.72s] 1.8910 ms
+  [48.24s] 1.8910 ms
+  [48.84s] 1.8910 ms
+  [49.80s] 1.8910 ms
+  [50.20s] 1.8910 ms
+  [50.61s] 1.8910 ms
+  [51.43s] 1.8910 ms
+  [51.80s] 1.8910 ms
+  [52.19s] 1.8910 ms
+  [52.59s] 1.8910 ms
+  [52.94s] 1.8910 ms
+  [53.40s] 1.8910 ms
+  [53.74s] 1.8910 ms
+  [54.08s] 1.8910 ms
+  [54.53s] 1.8910 ms
+  [55.04s] 1.8868 ms
+  [55.54s] 1.8868 ms
+  [56.05s] 1.8868 ms
+  [56.46s] 1.8868 ms
+  [56.84s] 1.8868 ms
+  [57.23s] 1.8868 ms
+  [57.66s] 1.8868 ms
+  [58.82s] 1.8868 ms
+  [59.58s] 1.8868 ms
+  [61.44s] 1.8868 ms
+  [61.92s] 1.8868 ms
+  [63.39s] 1.8868 ms
+  [63.92s] 1.8868 ms
+  [64.42s] 1.8868 ms
+  [64.92s] 1.8868 ms
+  [65.25s] 1.8868 ms
+  [65.60s] 1.8868 ms
+  [65.94s] 1.8868 ms
+  [66.27s] 1.8868 ms
+  [66.92s] 1.8868 ms
+  [67.58s] 1.8868 ms
+  [68.33s] 1.8868 ms
+  [69.04s] 1.8868 ms
+  [69.44s] 1.8868 ms
+  [69.88s] 1.8868 ms
+  [70.56s] 1.8868 ms
+  [70.99s] 1.8868 ms
+  [71.99s] 1.8868 ms
+  [73.07s] 1.8868 ms
+  [75.77s] 1.8868 ms
+  [76.64s] 1.8868 ms
+  [78.20s] 1.8868 ms
+  [78.55s] 1.8868 ms
+  [78.88s] 1.8868 ms
+  [79.25s] 1.8868 ms
+  [79.56s] 1.8868 ms
+  [79.87s] 1.8868 ms
+  [80.17s] 1.8868 ms
+  [80.55s] 1.8868 ms
+  [80.98s] 1.8820 ms
+  [81.37s] 1.8820 ms
+  [81.79s] 1.8820 ms
+  [82.23s] 1.8820 ms
+  [82.55s] 1.8820 ms
+  [82.87s] 1.8605 ms
+  [83.21s] 1.8605 ms
+  [83.61s] 1.8605 ms
+  [84.13s] 1.8134 ms
+  [84.68s] 1.7896 ms
+  [85.26s] 1.7896 ms
+  [85.86s] 1.7896 ms
+  [86.53s] 1.7896 ms
+  [86.99s] 1.7896 ms
+  [87.39s] 1.7896 ms
+  [87.81s] 1.7896 ms
+  [88.51s] 1.7896 ms
+  [88.93s] 1.7896 ms
+  [89.34s] 1.7896 ms
+  [89.73s] 1.7896 ms
+  [90.11s] 1.7896 ms
+  [90.43s] 1.7896 ms
+  [90.77s] 1.7896 ms
+  [91.12s] 1.7896 ms
+  [91.65s] 1.7896 ms
+  [92.16s] 1.7896 ms
+  [92.68s] 1.7896 ms
+  [93.21s] 1.7896 ms
+  [93.58s] 1.7896 ms
+  [93.96s] 1.7896 ms
+  [94.34s] 1.7896 ms
+  [94.74s] 1.7896 ms
+  [95.53s] 1.7896 ms
+  [96.41s] 1.7896 ms
+  [97.27s] 1.7896 ms
+  [98.23s] 1.7896 ms
+  [98.74s] 1.7896 ms
+  [99.26s] 1.7896 ms
+  [99.79s] 1.7896 ms
+  [100.32s] 1.7896 ms
+  [100.86s] 1.7896 ms
+  [101.38s] 1.7896 ms
+  [101.93s] 1.7896 ms
+  [102.47s] 1.7896 ms
+  [102.85s] 1.7896 ms
+  [103.47s] 1.7896 ms
+  [103.87s] 1.7896 ms
+  [104.26s] 1.7896 ms
+  [105.05s] 1.7896 ms
+  [105.87s] 1.7896 ms
+  [106.70s] 1.7896 ms
+  [107.54s] 1.7896 ms
+  [108.08s] 1.7896 ms
+  [108.59s] 1.7896 ms
+  [109.09s] 1.7896 ms
+  [109.65s] 1.7896 ms
+  [111.38s] 1.7896 ms
+  [113.19s] 1.7896 ms
+  [115.05s] 1.7896 ms
+  [116.92s] 1.7896 ms
+  [118.36s] 1.7896 ms
+  [119.20s] 1.7896 ms
+  [120.07s] 1.7896 ms
+  [120.90s] 1.7896 ms
+  [121.05s] 1.7896 ms
+  [121.13s] 1.7896 ms
+  [121.20s] 1.7896 ms
+  [121.28s] 1.7896 ms
+  [121.36s] 1.7896 ms
+  [121.49s] 1.7896 ms
+  [121.57s] 1.7896 ms
+  [121.65s] 1.7896 ms
+  [121.71s] 1.7896 ms
+  [121.79s] 1.7896 ms
+  [121.86s] 1.7896 ms
+  [121.92s] 1.7896 ms
+  [122.03s] 1.7896 ms
+  [122.12s] 1.7896 ms
+  [122.21s] 1.7896 ms
+  [122.29s] 1.7896 ms
+  [122.37s] 1.7896 ms
+  [122.44s] 1.7896 ms
+  [122.52s] 1.7896 ms
+  [122.59s] 1.7896 ms
+  [122.66s] 1.7896 ms
+  [122.74s] 1.7896 ms
+  [122.84s] 1.7896 ms
+  [122.92s] 1.7896 ms
+  [123.03s] 1.7896 ms
+  [123.08s] 1.7896 ms
+  [123.14s] 1.7896 ms
+  [123.20s] 1.7896 ms
+  [123.27s] 1.7896 ms
+  [123.36s] 1.7896 ms
+  [123.43s] 1.7896 ms
+  [123.54s] 1.7896 ms
+  [123.65s] 1.7896 ms
+  [123.74s] 1.7896 ms
+  [123.80s] 1.7896 ms
+  [123.88s] 1.7896 ms
+  [124.48s] 1.7896 ms
+  [124.55s] 1.7896 ms
+  [124.61s] 1.7896 ms
+  [124.67s] 1.7896 ms
+  [124.72s] 1.7862 ms
+  [124.78s] 1.7862 ms
+  [124.83s] 1.7862 ms
+  [124.88s] 1.7862 ms
+  [124.94s] 1.7862 ms
+  [124.99s] 1.7862 ms
+  [125.06s] 1.7862 ms
+  [125.13s] 1.7862 ms
+  [125.18s] 1.7862 ms
+  [125.24s] 1.7862 ms
+  [125.30s] 1.7862 ms
+  [125.37s] 1.7862 ms
+  [125.43s] 1.7862 ms
+  [125.48s] 1.7862 ms
+  [125.54s] 1.7862 ms
+  [125.59s] 1.7862 ms
+  [125.64s] 1.7862 ms
+  [125.69s] 1.7862 ms
+  [125.74s] 1.7862 ms
+  [125.79s] 1.7862 ms
+  [125.85s] 1.7862 ms
+  [125.92s] 1.7862 ms
+  [125.97s] 1.7862 ms
+  [126.03s] 1.7862 ms
+  [126.08s] 1.7547 ms
+  [126.13s] 1.7547 ms
+  [126.19s] 1.7543 ms
+  [126.24s] 1.7540 ms
+  [126.29s] 1.7540 ms
+  [126.34s] 1.7540 ms
+  [126.39s] 1.7540 ms
+  [126.46s] 1.7540 ms
+  Final: 1.7540 ms
+  Phase 2 speedup: 7.81%
+
+Rank   Time (ms)    Subgraphs    Status     Strategy
+------ ------------ ------------ ---------- --------------------------------------------------
+🏆1    1.7540       3            ✓          [gemm_qk,scale_c,add_mask,softmax,gemm_pv] | [gemm_qk,scale_c,add_mask,log_neg,add_mask,scale_c,softmax] | [sum_h2o]
+      Subgraph 0: BM=64, BN=64, W=4, S=3
+      Subgraph 1: BM=32, BN=128, W=4, S=3
+      Subgraph 2: BM=128, BN=128, W=4, S=5
+
+======================================================================
+🏆 Optimal Partition Found!
+======================================================================
+Subgraph 0 Config: BM=64, BN=64, W=4, S=3
+Subgraph 1 Config: BM=32, BN=128, W=4, S=3
+Subgraph 2 Config: BM=128, BN=128, W=4, S=5
+Strategy: [gemm_qk → scale_c → add_mask → softmax → gemm_pv] | [gemm_qk → scale_c → add_mask → log_neg → add_mask → scale_c → softmax] | [sum_h2o]
+Subgraphs: 3
+Best time: 1.7540 ms
+======================================================================
+
+kf kernel: runs=100 mean=1.774 ms median=1.773 ms min=1.763 ms p95=1.790 ms

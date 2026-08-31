@@ -1,0 +1,64 @@
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":0.351}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":5.041}
+{"hw":"NVIDIA H800","method":"sdpa","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":2.588}
+{"hw":"NVIDIA H800","method":"flash_attn","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":0.546}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":0.4130650976587673}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"attn","shape":"[1,32,4096,128]","avg":0.5800}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"corm","shape":"[1,32,4096,128]","avg": 1.046}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"corm","shape":"[1,32,4096,128]","avg":6.755}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"corm","shape":"[1,32,4096,128]","avg":1.2023240000009536}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"corm","shape":"[1,32,4096,128]","avg":1.4746}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"dsa","shape":"[1,128,4096,576]","avg": 7.203}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"dsa","shape":"[1,128,4096,576]","avg":58.836}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"gemma2","shape":"[1,32,4096,128]","avg": 0.463}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"gemma2","shape":"[1,32,4096,128]","avg":10.813}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"gemma2","shape":"[1,32,4096,128]","avg":0.48370472697371786}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"gemma2","shape":"[1,32,4096,128]","avg":0.5943}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"h2o","shape":"[1,32,4096,128]","avg": 0.804}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"h2o","shape":"[1,32,4096,128]","avg": 9.391}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"h2o","shape":"[1,32,4096,128]","avg":0.834512456258138}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"h2o","shape":"[1,32,4096,128]","avg":1.2436}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"kf","shape":"[1,32,4096,128]","avg": 1.993}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"kf","shape":"[1,32,4096,128]","avg": 19.916}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"kf","shape":"[1,32,4096,128]","avg":2.4393978934538993}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"kf","shape":"[1,32,4096,128]","avg":2.6392}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"roco","shape":"[1,32,4096,128]","avg": 0.947}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"roco","shape":"[1,32,4096,128]","avg": 11.481}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"roco","shape":"[1,32,4096,128]","avg":0.9144240832820381}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"roco","shape":"[1,32,4096,128]","avg":1.2689}
+{"hw":"NVIDIA H800","method":"our","type":"op","op":"snapkv","shape":"[1,32,4096,128]","avg": 0.817}
+{"hw":"NVIDIA H800","method":"torch","type":"op","op":"snapkv","shape":"[1,32,4096,128]","avg": 9.395}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"op","op":"snapkv","shape":"[1,32,4096,128]","avg":0.8967887248311724}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"op","op":"snapkv","shape":"[1,32,4096,128]","avg":1.2559}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"corm","shape":"[1,32,4096,128]","avg":130.328}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"corm","shape":"[1,32,4096,128]","avg":147.1738}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"gemma2","shape":"[1,32,4096,128]","avg":109.043}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"gemma2","shape":"[1,32,4096,128]","avg":116.8744}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"h2o","shape":"[1,32,4096,128]","avg":124.859}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"h2o","shape":"[1,32,4096,128]","avg":138.7841}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"kf","shape":"[1,32,4096,128]","avg":193.716}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"kf","shape":"[1,32,4096,128]","avg":216.6146}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"roco","shape":"[1,32,4096,128]","avg":138.194}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"roco","shape":"[1,32,4096,128]","avg":147.4469}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"snapkv","shape":"[1,32,4096,128]","avg":124.969}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"snapkv","shape":"[1,32,4096,128]","avg":138.8766}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"attn","shape":"[1,32,4096,128]","avg":106.388}
+{"hw":"NVIDIA H800","method":"flashtensor","type":"model","op":"attn","shape":"[1,32,4096,128]","avg":115.2550}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"attn","shape":"[1,32,4096,128]","avg":109.730}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"gemma2","shape":"[1,32,4096,128]","avg":111.830}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"snapkv","shape":"[1,32,4096,128]","avg":127.315}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"roco","shape":"[1,32,4096,128]","avg":137.155}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"h2o","shape":"[1,32,4096,128]","avg":127.158}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"kf","shape":"[1,32,4096,128]","avg":210.471}
+{"hw":"NVIDIA H800","method":"flashtensor-3.5","type":"model","op":"corm","shape":"[1,32,4096,128]","avg":136.892}
+{"hw":"NVIDIA H800","method":"tilelang","type":"model","op":"dsa","shape":"[1,128,4096,576]","avg":900.429}
+{"hw":"NVIDIA H800","method":"our","type":"model","op":"dsa","shape":"[1,128,4096,576]","avg":842.988}
+{"hw":"NVIDIA H800","method":"tilelang","type":"op","op":"dsa","shape":"[1,128,4096,576]","avg":8.405}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"attn","shape":"[1,32,4096,128]","avg":369.019}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"corm","shape":"[1,32,4096,128]","avg":438.547}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"dsa","shape":"[1,128,4096,576]","avg":oom}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"gemma2","shape":"[1,32,4096,128]","avg":437.405}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"h2o","shape":"[1,32,4096,128]","avg":393.142}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"kf","shape":"[1,32,4096,128]","avg":765.562}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"roco","shape":"[1,32,4096,128]","avg":470.240}
+{"hw":"NVIDIA H800","method":"torch","type":"model","op":"snapkv","shape":"[1,32,4096,128]","avg":394.348}
