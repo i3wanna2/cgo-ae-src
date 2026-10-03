@@ -140,4 +140,9 @@ echo "Done figure-7."
 echo "  logs:    ${LOG_DIR}/"
 echo "  results: ${RESULTS_DIR}/"
 echo "  pdf:     ${FIG_DIR}/eva_atten_kernel_4096.pdf"
-exit "${rc_bench}"
+corr=0
+bash "${AE_DIR}/report_correctness.sh" "${LOG_DIR}" || corr=$?
+if [[ "${rc_bench}" -ne 0 || "${corr}" -ne 0 ]]; then
+  exit 1
+fi
+exit 0

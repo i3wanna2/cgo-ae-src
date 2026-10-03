@@ -31,7 +31,7 @@ def gflops_and_mib(seqlen, f, *args):
 @click.option('--system', '-s', default='our', help='System name')
 @click.option('--seqlen', default=4096, help='seqlen')
 @click.option('--show_result', is_flag=True, help='show result')
-@click.option('--check/--no-check', default=False, help='check result with torch')
+@click.option('--check/--no-check', default=True, help='Check correctness against Torch')
 def main(model, system, seqlen, show_result, check):
   print(f"{model=} {system=} {seqlen=}")
   assert model in KERNEL_ZOO, f"model {model} not found in KERNEL_ZOO {KERNEL_ZOO.keys()}"
@@ -83,11 +83,22 @@ def main(model, system, seqlen, show_result, check):
   print(f"{mib=}", flush=True)
 
   if check:
-    print(f"checking {system}...")
-    outs_ref = model(*inputs)
-    outs = f(*inputs)
-    torch.cuda.synchronize()
-    compare(outs, outs_ref, output_names)
+    print("Checking correctness against Torch...")
+    try:
+      outs_ref = model(*inputs)
+      outs = f(*inputs)
+      torch.cuda.synchronize()
+      compare(outs, outs_ref, output_names)
+      got = outs if isinstance(outs, (list, tuple)) else [outs]
+      ref = outs_ref if isinstance(outs_ref, (list, tuple)) else [outs_ref]
+      names = output_names if isinstance(outs, (list, tuple)) else output_names[:1]
+      for out, baseline, name in zip(got, ref, names):
+        if (not torch.isfinite(out).all()) or (not torch.isfinite(baseline).all()):
+          raise AssertionError(f"{name} contains NaN or Inf")
+        torch.testing.assert_close(out, baseline, rtol=1e-3, atol=1e-2)
+      print("Correctness check passed!")
+    except Exception as exc:
+      print(f"Correctness check failed: {exc}")
     if show_result:
       display(outs, outs_ref, output_names)
     

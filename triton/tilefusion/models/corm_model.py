@@ -418,7 +418,7 @@ def llm_setup(weight_path, seqlen, layer_num):
 @click.option('--layer_num', type=int, default=None, help='layer_num')
 @click.option('--platform', '-p', default='H800', help='platform(H800, A100, H100)')
 @click.option('--mode', default='kernel', type=click.Choice(['kernel', 'both']), help='Benchmark mode: kernel only or both kernel and E2E')
-@click.option('--check', is_flag=True, help='Check correctness')
+@click.option('--check/--no-check', default=True, help='Check correctness against Torch')
 def main(model, system, seqlen, layer_num, platform, mode, check):
     print(f"{model=} {system=} {seqlen=} {layer_num=} {mode=} {check=}")
     seed = 0
@@ -485,13 +485,16 @@ def main(model, system, seqlen, layer_num, platform, mode, check):
 
     # 0) Check correctness
     if check:
-        print("Checking correctness...")
-        with torch.no_grad():
-            out_ref, corm_ref = kernel(q, k, v, corm_mask)
-            out_test, corm_test = attn_callable(q, k, v, corm_mask)
-            torch.testing.assert_close(out_test, out_ref, rtol=1e-3, atol=1e-2)
-            torch.testing.assert_close(corm_test.float(), corm_ref.float(), rtol=1e-3, atol=1e-2)
-            print("Correctness check passed!")
+        print("Checking correctness against Torch...")
+        try:
+            with torch.no_grad():
+                out_ref, corm_ref = kernel(q, k, v, corm_mask)
+                out_test, corm_test = attn_callable(q, k, v, corm_mask)
+                torch.testing.assert_close(out_test, out_ref, rtol=1e-3, atol=1e-2)
+                torch.testing.assert_close(corm_test.float(), corm_ref.float(), rtol=1e-3, atol=1e-2)
+                print("Correctness check passed!")
+        except Exception as exc:
+            print(f"Correctness check failed: {exc}")
 
     # 1) Benchmark attention kernel only (skip when external function provided)
 

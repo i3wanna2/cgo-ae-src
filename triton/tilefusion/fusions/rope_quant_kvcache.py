@@ -312,7 +312,7 @@ class TensorRTBaseline:
         dummy_kvc = torch.randn(num_tokens, kv_lora_rank, device=device, dtype=dtype)
         dummy_cos = torch.randn(num_tokens, embed_dim, device=device, dtype=dtype)
         dummy_sin = torch.randn(num_tokens, embed_dim, device=device, dtype=dtype)
-        dummy_scale = torch.tensor([1.0 / 448.0], device=device, dtype=torch.float32)
+        dummy_scale = torch.tensor([32.0], device=device, dtype=torch.float32)
 
         buf = io.BytesIO()
         with torch.no_grad():
@@ -498,7 +498,7 @@ def _ttir_of_cache_quant_write(
         device=DEVICE, dtype=torch.int8
     )
     slot_mapping = torch.arange(num_tokens, device=DEVICE, dtype=torch.int64)
-    kv_cache_quant_scale = torch.tensor([1.0 / 448.0], device=DEVICE, dtype=torch.float32)
+    kv_cache_quant_scale = torch.tensor([32.0], device=DEVICE, dtype=torch.float32)
 
     grid = (num_tokens,)
 
@@ -741,7 +741,7 @@ def create_test_inputs(
     max_position=4096,
     num_blocks=256,
     block_size=16,
-    kv_scale=1.0 / 448.0,   # FP8 E4M3 max = 448
+    kv_scale=32.0,
     device=DEVICE,
     dtype=torch.float16,
 ):
@@ -1063,184 +1063,131 @@ def run_single_config(
             "best_cfg": {"BM": BM, "num_warps": num_warps, "num_stages": num_stages},
         })
 
-    # Validation helper: dequantize uint8/int8 kv_cache back to fp16 for comparison
-    # Following PR's approach: compare dequantized fp16, not raw bytes
-    def dequantize_kv_cache(kv_cache_u8, scale):
-        """Reinterpret uint8 bytes as signed int8, then dequantize to fp16."""
-        return kv_cache_u8.view(torch.int8).float().div(scale).to(torch.float16)
-
-    scale_val = inputs['kv_cache_quant_scale'].item()
-
-    # Validation 3: Torch_baseline vs CUDA
-    q_torch_val = inputs['q_pe'].clone()
-    k_torch_val = inputs['k_pe'].clone()
-    c_torch_val = inputs['kv_cache'].clone()
+    # Quantization-aware validation against the independent PyTorch path.
+    # RoPE outputs use FP16 tolerances. Cache comparison is restricted to the
+    # slots written by this workload and permits at most one INT8 quantization
+    # level, which covers backend differences exactly at rounding boundaries.
+    q_ref = inputs['q_pe'].clone()
+    k_ref = inputs['k_pe'].clone()
+    cache_ref = inputs['kv_cache'].clone()
     torch_baseline(
-        inputs['positions'], q_torch_val, k_torch_val, inputs['kv_c'],
+        inputs['positions'], q_ref, k_ref, inputs['kv_c'],
         inputs['rope_cos_sin_cache'], rope_is_neox,
-        inputs['kv_cache_slot_mapping'], c_torch_val, inputs['kv_cache_quant_scale'],
-    )
-    # Re-run CUDA for fresh reference
-    q_pe_cuda_v3 = inputs['q_pe'].clone()
-    k_pe_cuda_v3 = inputs['k_pe'].clone()
-    kv_cache_cuda_v3 = torch.zeros_like(kv_cache_cuda)
-    mla_rope_quant_cuda.concat_and_cache_mla_rope_quant_fused(
-        inputs['positions'], q_pe_cuda_v3, k_pe_cuda_v3, inputs['kv_c'],
-        inputs['rope_cos_sin_cache'], rope_is_neox,
-        inputs['kv_cache_slot_mapping'], kv_cache_cuda_v3,
+        inputs['kv_cache_slot_mapping'], cache_ref,
         inputs['kv_cache_quant_scale'],
     )
-    cuda_kv_dq_v3  = dequantize_kv_cache(kv_cache_cuda_v3, scale_val)
-    torch_kv_dq    = dequantize_kv_cache(c_torch_val, scale_val)
-    print("\nValidating Torch_baseline vs CUDA (q_pe, k_pe, kv_cache dequantized)...")
-    validate_correctness(
-        lambda: None,
-        lambda: None,
-        [q_pe_cuda_v3, k_pe_cuda_v3, cuda_kv_dq_v3],
-        [q_torch_val, k_torch_val, torch_kv_dq],
-        rtol=1e-1,
-        atol=1e-3,
-    )
 
-    # Validation 1: Triton_baseline vs CUDA
-    # CUDA outputs uint8 kv_cache (fp8 quant); Triton also writes int8 quant
-    # Dequantize both to fp16 before comparing (following PR's test approach)
-    q_base_val = inputs['q_pe'].clone()
-    k_base_val = inputs['k_pe'].clone()
-    c_base_val = inputs['kv_cache'].clone()
+    slots = inputs['kv_cache_slot_mapping']
+    block_indices = slots // block_size
+    entry_indices = slots % block_size
+    ref_codes = cache_ref[block_indices, entry_indices].view(torch.int8).to(torch.int16)
+    ref_nonzero = int((ref_codes != 0).sum().item())
+    if ref_nonzero == 0:
+        raise AssertionError('Torch reference cache is all zero')
 
-    def baseline_for_cuda_val():
-        triton_baseline(
-            q_base_val, inputs['rope_cos_sin_cache'], inputs['positions'],
-            num_tokens, num_q_heads, rot_dim,
-            k_base_val, inputs['kv_cache_slot_mapping'],
-            inputs['kv_c'], c_base_val, inputs['kv_cache_quant_scale'],
-            kv_lora_rank, block_size,
+    validation_failures = []
+
+    def validate_against_torch(label, q, k, cache):
+        print(f"\nValidating {label} against Torch...")
+        try:
+            torch.testing.assert_close(q, q_ref, rtol=1e-3, atol=2 ** -9)
+            torch.testing.assert_close(k, k_ref, rtol=1e-3, atol=2 ** -9)
+            print('  RoPE q/k: passed')
+        except AssertionError as exc:
+            print(f'  RoPE q/k: failed: {exc}')
+            validation_failures.append(f'{label} RoPE q/k')
+
+        got_codes = cache[block_indices, entry_indices].view(torch.int8).to(torch.int16)
+        delta = (got_codes - ref_codes).abs()
+        total = delta.numel()
+        mismatches = int((delta != 0).sum().item())
+        over_one = int((delta > 1).sum().item())
+        max_code_diff = int(delta.max().item())
+        nonzero = int((got_codes != 0).sum().item())
+        exact_rate = 100.0 * (total - mismatches) / total
+        print(
+            f'  INT8 written cache: exact={exact_rate:.6f}% '
+            f'({total - mismatches}/{total}), max_code_diff={max_code_diff}, '
+            f'diff_gt_1={over_one}, nonzero={nonzero}/{total}'
         )
+        if nonzero == 0 or over_one != 0:
+            validation_failures.append(f'{label} INT8 cache')
+            print('  INT8 cache: failed')
+        else:
+            print('  INT8 cache: passed (all values within one quantization level)')
 
-    cuda_launcher()  # populate q_pe_cuda, k_pe_cuda, kv_cache_cuda
-    baseline_for_cuda_val()  # populate q_base_val, k_base_val, c_base_val
-
-    cuda_kv_dq   = dequantize_kv_cache(kv_cache_cuda, scale_val)
-    base_kv_dq   = dequantize_kv_cache(c_base_val, scale_val)
-
-    print("\nValidating Triton_baseline vs CUDA (q_pe, k_pe, kv_cache dequantized)...")
-    validate_correctness(
-        lambda: None,
-        lambda: None,
-        [q_pe_cuda, k_pe_cuda, cuda_kv_dq],
-        [q_base_val, k_base_val, base_kv_dq],
-        rtol=1e-1,
-        atol=1e-3,   # dequantized fp16, matching PR's atol=0.001
+    # CUDA
+    q_cuda = inputs['q_pe'].clone()
+    k_cuda = inputs['k_pe'].clone()
+    cache_cuda = inputs['kv_cache'].clone()
+    mla_rope_quant_cuda.concat_and_cache_mla_rope_quant_fused(
+        inputs['positions'], q_cuda, k_cuda, inputs['kv_c'],
+        inputs['rope_cos_sin_cache'], rope_is_neox,
+        inputs['kv_cache_slot_mapping'], cache_cuda,
+        inputs['kv_cache_quant_scale'],
     )
+    validate_against_torch('CUDA', q_cuda, k_cuda, cache_cuda)
 
-    # Validation 2: Triton_fused vs CUDA
-    q_pe_cuda2 = inputs['q_pe'].clone()
-    k_pe_cuda2 = inputs['k_pe'].clone()
-    kv_cache_cuda2 = torch.zeros_like(kv_cache_cuda)
-
-    def cuda_launcher2():
-        mla_rope_quant_cuda.concat_and_cache_mla_rope_quant_fused(
-            inputs['positions'], q_pe_cuda2, k_pe_cuda2, inputs['kv_c'],
-            inputs['rope_cos_sin_cache'], rope_is_neox,
-            inputs['kv_cache_slot_mapping'], kv_cache_cuda2,
-            inputs['kv_cache_quant_scale'],
-        )
-
-    q_fused_val = inputs['q_pe'].clone()
-    k_fused_val = inputs['k_pe'].clone()
-    c_fused_val = inputs['kv_cache'].clone()
-
-    def fused_for_cuda_val():
-        args = [
-            q_fused_val, inputs['rope_cos_sin_cache'], inputs['positions'],
-            num_tokens, num_q_heads, rot_dim,
-            q_fused_val.stride(0), q_fused_val.stride(1),
-            inputs['rope_cos_sin_cache'].stride(0),
-            k_fused_val, inputs['kv_cache_slot_mapping'], k_fused_val.stride(0),
-            inputs['kv_c'], c_fused_val, inputs['kv_cache_quant_scale'],
-            kv_lora_rank, block_size,
-            inputs['kv_c'].stride(0),
-            c_fused_val.stride(0), c_fused_val.stride(1),
-        ]
-        compiled[grid](*args)
-
-    cuda_launcher2()
-    fused_for_cuda_val()
-
-    cuda_kv_dq2  = dequantize_kv_cache(kv_cache_cuda2, scale_val)
-    fused_kv_dq  = dequantize_kv_cache(c_fused_val, scale_val)
-
-    print("\nValidating Triton_fused vs CUDA (q_pe, k_pe, kv_cache dequantized)...")
-    validate_correctness(
-        lambda: None,
-        lambda: None,
-        [q_pe_cuda2, k_pe_cuda2, cuda_kv_dq2],
-        [q_fused_val, k_fused_val, fused_kv_dq],
-        rtol=1e-1,
-        atol=1e-3,   # dequantized fp16, matching PR's atol=0.001
+    # Triton baseline
+    q_base = inputs['q_pe'].clone()
+    k_base = inputs['k_pe'].clone()
+    cache_base = inputs['kv_cache'].clone()
+    triton_baseline(
+        q_base, inputs['rope_cos_sin_cache'], inputs['positions'],
+        num_tokens, num_q_heads, rot_dim,
+        k_base, inputs['kv_cache_slot_mapping'],
+        inputs['kv_c'], cache_base, inputs['kv_cache_quant_scale'],
+        kv_lora_rank, block_size,
+        BM=BM, num_warps=num_warps, num_stages=num_stages,
     )
+    validate_against_torch('Triton_baseline', q_base, k_base, cache_base)
 
-    # Validation 4: Dynamo vs CUDA
-    q_dynamo_val = inputs['q_pe'].clone()
-    k_dynamo_val = inputs['k_pe'].clone()
-    c_dynamo_val = inputs['kv_cache'].clone()
+    # Triton fused / TileFusion
+    q_fused = inputs['q_pe'].clone()
+    k_fused = inputs['k_pe'].clone()
+    cache_fused = inputs['kv_cache'].clone()
+    fused_args = [
+        q_fused, inputs['rope_cos_sin_cache'], inputs['positions'],
+        num_tokens, num_q_heads, rot_dim,
+        q_fused.stride(0), q_fused.stride(1), inputs['rope_cos_sin_cache'].stride(0),
+        k_fused, inputs['kv_cache_slot_mapping'], k_fused.stride(0),
+        inputs['kv_c'], cache_fused, inputs['kv_cache_quant_scale'],
+        kv_lora_rank, block_size,
+        inputs['kv_c'].stride(0),
+        cache_fused.stride(0), cache_fused.stride(1),
+    ]
+    compiled[grid](*fused_args)
+    validate_against_torch('Triton_fused', q_fused, k_fused, cache_fused)
+
+    # Dynamo
+    q_dynamo = inputs['q_pe'].clone()
+    k_dynamo = inputs['k_pe'].clone()
+    cache_dynamo = inputs['kv_cache'].clone()
     dynamo_baseline(
-        inputs['positions'], q_dynamo_val, k_dynamo_val, inputs['kv_c'],
+        inputs['positions'], q_dynamo, k_dynamo, inputs['kv_c'],
         inputs['rope_cos_sin_cache'], rope_is_neox,
-        inputs['kv_cache_slot_mapping'], c_dynamo_val, inputs['kv_cache_quant_scale'],
-    )
-    q_pe_cuda_v4 = inputs['q_pe'].clone()
-    k_pe_cuda_v4 = inputs['k_pe'].clone()
-    kv_cache_cuda_v4 = torch.zeros_like(kv_cache_cuda)
-    mla_rope_quant_cuda.concat_and_cache_mla_rope_quant_fused(
-        inputs['positions'], q_pe_cuda_v4, k_pe_cuda_v4, inputs['kv_c'],
-        inputs['rope_cos_sin_cache'], rope_is_neox,
-        inputs['kv_cache_slot_mapping'], kv_cache_cuda_v4,
+        inputs['kv_cache_slot_mapping'], cache_dynamo,
         inputs['kv_cache_quant_scale'],
     )
-    cuda_kv_dq_v4 = dequantize_kv_cache(kv_cache_cuda_v4, scale_val)
-    dynamo_kv_dq  = dequantize_kv_cache(c_dynamo_val, scale_val)
-    print("\nValidating Dynamo vs CUDA (q_pe, k_pe, kv_cache dequantized)...")
-    validate_correctness(
-        lambda: None,
-        lambda: None,
-        [q_pe_cuda_v4, k_pe_cuda_v4, cuda_kv_dq_v4],
-        [q_dynamo_val, k_dynamo_val, dynamo_kv_dq],
-        rtol=1e-1,
-        atol=1e-3,
-    )
+    validate_against_torch('Dynamo', q_dynamo, k_dynamo, cache_dynamo)
 
-    # Validation 5: TensorRT vs CUDA (only if TRT engine was built)
+    # TensorRT
     if trt_available:
-        q_trt_val = inputs['q_pe'].clone()
-        k_trt_val = inputs['k_pe'].clone()
-        c_trt_val = inputs['kv_cache'].clone()
+        q_trt = inputs['q_pe'].clone()
+        k_trt = inputs['k_pe'].clone()
+        cache_trt = inputs['kv_cache'].clone()
         trt_runner(
-            inputs['positions'], q_trt_val, k_trt_val, inputs['kv_c'],
+            inputs['positions'], q_trt, k_trt, inputs['kv_c'],
             inputs['rope_cos_sin_cache'], rope_is_neox,
-            inputs['kv_cache_slot_mapping'], c_trt_val, inputs['kv_cache_quant_scale'],
-        )
-        q_pe_cuda_v5 = inputs['q_pe'].clone()
-        k_pe_cuda_v5 = inputs['k_pe'].clone()
-        kv_cache_cuda_v5 = torch.zeros_like(kv_cache_cuda)
-        mla_rope_quant_cuda.concat_and_cache_mla_rope_quant_fused(
-            inputs['positions'], q_pe_cuda_v5, k_pe_cuda_v5, inputs['kv_c'],
-            inputs['rope_cos_sin_cache'], rope_is_neox,
-            inputs['kv_cache_slot_mapping'], kv_cache_cuda_v5,
+            inputs['kv_cache_slot_mapping'], cache_trt,
             inputs['kv_cache_quant_scale'],
         )
-        cuda_kv_dq_v5 = dequantize_kv_cache(kv_cache_cuda_v5, scale_val)
-        trt_kv_dq     = dequantize_kv_cache(c_trt_val, scale_val)
-        print("\nValidating TensorRT vs CUDA (q_pe, k_pe, kv_cache dequantized)...")
-        validate_correctness(
-            lambda: None,
-            lambda: None,
-            [q_pe_cuda_v5, k_pe_cuda_v5, cuda_kv_dq_v5],
-            [q_trt_val, k_trt_val, trt_kv_dq],
-            rtol=1e-1,
-            atol=1e-3,
-        )
+        validate_against_torch('TensorRT', q_trt, k_trt, cache_trt)
+
+    if validation_failures:
+        print('Correctness check failed: ' + ', '.join(validation_failures))
+    else:
+        print('\nAll Figure 6 methods passed quantization-aware validation.')
 
     return records
 

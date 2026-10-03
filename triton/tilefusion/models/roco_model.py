@@ -410,7 +410,7 @@ def llm_setup(weight_path, seqlen, layer_num, cache_budget, roco_recent):
 @click.option('--roco_recent', type=int, default=256, help='roco_recent')
 @click.option('--platform', '-p', default='H800', help='platform(H800, A100, H100)')
 @click.option('--mode', default='kernel', type=click.Choice(['kernel', 'both']), help='Benchmark mode: kernel only or both kernel and E2E')
-@click.option('--check', is_flag=True, help='Check correctness')
+@click.option('--check/--no-check', default=True, help='Check correctness against Torch')
 def main(model, system, seqlen, layer_num, cache_budget, roco_recent, platform, mode, check):
     print(f"{model=} {system=} {seqlen=} {layer_num=} {cache_budget=} {roco_recent=} {mode=} {check=}")
     seed = 0
@@ -476,14 +476,17 @@ def main(model, system, seqlen, layer_num, cache_budget, roco_recent, platform, 
 
     # 0) Check correctness
     if check:
-        print("Checking correctness...")
-        with torch.no_grad():
-            out_ref, out_ref1, out_ref2= kernel(q, k, v)
-            out_test, out_test1, out_test2 = attn_callable(q, k, v)
-            torch.testing.assert_close(out_test.to(torch.float16), out_ref.to(torch.float16), rtol=1e-3, atol=1e-2)
-            torch.testing.assert_close(out_test1.to(torch.float32), out_ref1.to(torch.float32), rtol=1e-3, atol=1e-2,check_dtype=False)
-            torch.testing.assert_close(out_test2.to(torch.float16), out_ref2.to(torch.float16), rtol=1e-3, atol=1e-2)
-            print("Correctness check passed!")
+        print("Checking correctness against Torch...")
+        try:
+            with torch.no_grad():
+                out_ref, out_ref1, out_ref2= kernel(q, k, v)
+                out_test, out_test1, out_test2 = attn_callable(q, k, v)
+                torch.testing.assert_close(out_test.to(torch.float16), out_ref.to(torch.float16), rtol=1e-3, atol=1e-2)
+                torch.testing.assert_close(out_test1.to(torch.float32), out_ref1.to(torch.float32), rtol=1e-3, atol=1e-2,check_dtype=False)
+                torch.testing.assert_close(out_test2.to(torch.float16), out_ref2.to(torch.float16), rtol=1e-3, atol=1e-2)
+                print("Correctness check passed!")
+        except Exception as exc:
+            print(f"Correctness check failed: {exc}")
 
     # 1) Benchmark attention kernel only (skip when external function provided)
 

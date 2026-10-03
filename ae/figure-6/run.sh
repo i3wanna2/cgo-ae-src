@@ -75,7 +75,13 @@ ensure_plot_deps
 "${PY}" "${FIG_DIR}/plot.py" --results-dir "${RESULTS_DIR}" --out-dir "${FIG_DIR}" --seqlen "${SEQLEN}"
 
 echo
+corr=0
+bash "${AE_DIR}/report_correctness.sh" "${LOG_DIR}" || corr=$?
 echo "Done figure-6."
 echo "  logs:    ${LOG_DIR}/"
 echo "  results: ${RESULTS_DIR}/"
 echo "  pdf:     ${FIG_DIR}/eva_rope_quant_kvcache_kernel_4096.pdf"
+if [[ "${corr}" -ne 0 ]]; then
+  exit 1
+fi
+exit 0

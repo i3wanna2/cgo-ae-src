@@ -139,16 +139,20 @@ class FusedDSAMLAOp:
         # Return [B, S, H, D]
         return self.output_tensor.transpose(1, 2)
     
-def generate_safe_mla_indices(B, S, G, TopK, device="cuda"):
+def generate_safe_mla_indices(B, S, G, TopK, device="cuda", padding_index=None):
     """
     生成符合 Sparse MLA 要求的稀疏索引
     Shape: [B, S, G, TopK]
-    
-    Padding slots use index=S (out-of-range) so tilelang's causal mask
-    (index <= seq_pos) correctly filters them out.
+
+    TileLang uses index=S as an out-of-range padding sentinel and filters it
+    with its causal mask. TileFusion kernels gather before applying their
+    positional mask, so they must use an in-range sink index (0) instead.
     """
-    # Initialize with S (out-of-range) so tilelang mask filters padding
-    indices = torch.full((B, S, G, TopK), S, dtype=torch.int32, device=device)
+    if padding_index is None:
+        padding_index = S
+    indices = torch.full(
+        (B, S, G, TopK), padding_index, dtype=torch.int32, device=device
+    )
     
     for t in range(S):
         valid_len = t + 1
@@ -887,11 +891,25 @@ class DSAMLA(nn.Module):
         )
         return res
 
-    def prepare(self, batch_size=1, seqlen=4096, dtype=torch.float16, device="cuda"):
+    def prepare(
+        self,
+        batch_size=1,
+        seqlen=4096,
+        dtype=torch.float16,
+        device="cuda",
+        padding_index=None,
+    ):
         # Use [B, S, H, D] layout
         Q = torch.randn(batch_size, seqlen, self.heads, self.K, device=device, dtype=torch.float16)
         Kmat = torch.randn(batch_size, seqlen, 1, self.K, device=device, dtype=torch.float16)
-        indices = generate_safe_mla_indices(batch_size, seqlen, 1, self.TopK, device=device)
+        indices = generate_safe_mla_indices(
+            batch_size,
+            seqlen,
+            1,
+            self.TopK,
+            device=device,
+            padding_index=padding_index,
+        )
         ret = {
             'input': {
                 'q': Q,
@@ -928,7 +946,7 @@ def llm_setup(seqlen, layer_num, vocab_size=None):
 @click.option('--layer_num', type=int, default=None, help='layer_num')
 @click.option('--platform', '-p', default='H800', help='platform(H800, A100, H100)')
 @click.option('--mode', default='kernel', type=click.Choice(['kernel', 'both']), help='Benchmark mode: kernel only or both kernel and E2E')
-@click.option('--check', is_flag=True, help='Check correctness')
+@click.option('--check/--no-check', default=True, help='Check correctness against Torch')
 def main(model, system, seqlen, layer_num, platform, mode, check):
     print(f"{model=} {system=} {seqlen=} {layer_num=} {mode=} {check=}")
     seed = 0
@@ -952,7 +970,11 @@ def main(model, system, seqlen, layer_num, platform, mode, check):
     model_cls = Transformer
 
     kernel = kernel_cls(heads=heads, M=seqlen, N=seqlen, K=K, D=D, TopK=TopK).eval().cuda()
-    specs = kernel.prepare(seqlen=seqlen)
+    # TileFusion gathers K/V before masking, so an out-of-range sentinel can
+    # produce non-finite values on some GPUs (for example, A100). TileLang
+    # deliberately uses S as a sentinel and filters it in its own causal mask.
+    padding_index = 0 if system == "our" else seqlen
+    specs = kernel.prepare(seqlen=seqlen, padding_index=padding_index)
     input_names = list(specs['input'].keys())
     inputs = [specs['input'][name] for name in input_names]
     output_names = specs['output']
@@ -1104,19 +1126,21 @@ def main(model, system, seqlen, layer_num, platform, mode, check):
     indices = specs['input']['indices']
     # 0) Check correctness
     if check:
-        print("Checking correctness...")
-        with torch.no_grad():
-            if system == 'tilelang-ws':
-                # Use tilelang-ws's own ref with matching q_start_index_s
-                out_ref = tilelang_ws_mod.ref_sparse_mla_fwd_interface(
-                    q, k, indices, q_start_index_s=_ws_q_start, kv_stride=1,
-                    sm_scale=K**-0.5,
-                )
-            else:
-                out_ref = kernel(q, k, indices)
-            out_test = attn_callable(q, k, indices)
-            torch.testing.assert_close(out_test, out_ref, rtol=1e-3, atol=1e-2)
-            print("Correctness check passed!")
+        print("Checking correctness against Torch...")
+        try:
+            with torch.no_grad():
+                if system == 'tilelang-ws':
+                    out_ref = tilelang_ws_mod.ref_sparse_mla_fwd_interface(
+                        q, k, indices, q_start_index_s=_ws_q_start, kv_stride=1,
+                        sm_scale=K**-0.5,
+                    )
+                else:
+                    out_ref = kernel(q, k, indices)
+                out_test = attn_callable(q, k, indices)
+                torch.testing.assert_close(out_test, out_ref, rtol=1e-3, atol=1e-2)
+                print("Correctness check passed!")
+        except Exception as exc:
+            print(f"Correctness check failed: {exc}")
 
     # 1) Benchmark attention kernel only
     def run_kernel():
