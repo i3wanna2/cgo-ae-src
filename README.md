@@ -54,8 +54,16 @@ printf '%s' \
 # triton + tilefusion
 cd /workspace/triton
 pip install -e . -v --no-build-isolation
+
+# fast-hadamard-transform: use the in-tree snapshot only
+# (1.0.4.post1 under triton/3rd/fast-hadamard-transform).
+# Do not `pip install fast-hadamard-transform` from PyPI; newer revisions and
+# prebuilt wheels do not match torch 2.9.1 / this image's C++11 ABI.
+export FAST_HADAMARD_TRANSFORM_FORCE_BUILD=TRUE
+export FAST_HADAMARD_TRANSFORM_FORCE_CXX11_ABI=TRUE
 cd /workspace/triton/3rd/fast-hadamard-transform
 pip install -e . -v --no-build-isolation
+
 cd /workspace/triton/tilefusion
 pip install -e . -v --no-build-isolation
 
@@ -99,7 +107,11 @@ cd ${PROJECT_DIR}/3rd/tvm
 mkdir -p build
 cp ${PROJECT_DIR}/script/tvm_config.cmake build/config.cmake
 cd build && cmake .. -G Ninja && ninja
-pip install "xgboost==2.0.0"
+
+# TVM 0.16 Python deps. `python setup.py install` does not always install
+# install_requires; missing `decorator` (and the rest) breaks `import tvm`.
+pip install "xgboost==2.0.0" \
+  attrs cloudpickle decorator ml_dtypes numpy psutil scipy tornado typing_extensions
 cd ${PROJECT_DIR}/3rd/tvm/python
 python setup.py install
 ```
