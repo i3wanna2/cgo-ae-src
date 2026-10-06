@@ -194,13 +194,13 @@ def benchmark_performance(*launchers, num_warmup=10, num_runs=100, labels=None):
               如果是新 API（3+ 个 launcher），返回 {'timings': [(label, ms), ...], 'speedups': [(label, speedup), ...]}
     """
     if len(launchers) < 2:
-        raise ValueError("至少需要提供 2 个 launcher 函数")
+        raise ValueError("Need at least 2 launcher functions")
     
     # 生成默认标签
     if labels is None:
         labels = [launcher.__name__ for launcher in launchers]
     elif len(labels) != len(launchers):
-        raise ValueError(f"labels 数量 ({len(labels)}) 必须与 launchers 数量 ({len(launchers)}) 相同")
+        raise ValueError(f"len(labels) ({len(labels)}) must match len(launchers) ({len(launchers)})")
     
     # Warmup - 对所有 launcher 进行预热
     for _ in range(num_warmup):
@@ -225,14 +225,14 @@ def benchmark_performance(*launchers, num_warmup=10, num_runs=100, labels=None):
     speedups = [baseline_ms / t if t > 0 else float('inf') for t in timings]
     
     # 打印结果
-    print(f"\n⏱️  性能对比 (预热={num_warmup}, 运行={num_runs}):")
+    print(f"\nPerformance comparison (warmup={num_warmup}, runs={num_runs}):")
     for label, ms, speedup in zip(labels, timings, speedups):
-        print(f"  {label:12s}: {ms:7.3f} ms  (加速比: {speedup:.2f}x)")
+        print(f"  {label:12s}: {ms:7.3f} ms  (speedup: {speedup:.2f}x)")
     
     # 找出最快的实现
     min_time = min(timings)
     fastest_idx = timings.index(min_time)
-    print(f"\n🚀 最快实现: {labels[fastest_idx]} ({min_time:.3f} ms)")
+    print(f"\nFastest: {labels[fastest_idx]} ({min_time:.3f} ms)")
     
     # 返回结果 - 兼容旧 API
     if len(launchers) == 2:
@@ -275,7 +275,7 @@ def validate_correctness(
     torch.cuda.synchronize()
 
     # === Step 2: 逐个比较每个输出 ===
-    print("\n📊 正确性验证 (多输出):")
+    print("\nCorrectness check (multi-output):")
     all_passed = True
 
     for i, (y_fused, y_baseline) in enumerate(zip(Y_fused, Y_baseline)):
@@ -288,8 +288,8 @@ def validate_correctness(
         norm_baseline = torch.norm(yb)
         relative_error = (torch.norm(yf - yb) / (norm_baseline + 1e-12)).item()
 
-        print(f"    最大绝对差: {max_diff:.6e}")
-        print(f"    相对误差: {relative_error:.6e}")
+        print(f"    max abs diff: {max_diff:.6e}")
+        print(f"    relative error: {relative_error:.6e}")
 
         try:
             # 非浮点输出用精确相等比较；浮点输出用 assert_close
@@ -316,7 +316,7 @@ def validate_correctness(
         print("\n  Fused vs PyTorch Reference:")
         for i, (y_fused, y_ref) in enumerate(zip(Y_fused, Y_ref)):
             max_diff_ref = torch.max(torch.abs(y_fused - y_ref)).item()
-            print(f"    Output {i} 最大绝对差: {max_diff_ref:.6e}")
+            print(f"    Output {i} max abs diff: {max_diff_ref:.6e}")
 
             try:
                 torch.testing.assert_close(y_fused, y_ref, rtol=rtol, atol=atol, equal_nan=True)

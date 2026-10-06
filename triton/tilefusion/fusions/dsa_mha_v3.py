@@ -350,11 +350,11 @@ def main():
             node_names = [n.kernel_name for n in compute_nodes]
             print(f"  Subgraph {sg_idx}: {' -> '.join(node_names)}")
     
-    print("\n🔄 运行baseline...")
+    print("\nRunning baseline...")
     torch_baseline_launcher()
     # scatter_fused_args = fused_args_list[4]
     # scatter_fused_args[1] = out_indicis  # 替换 scatter 的 indices 输入为 baseline 结果
-    print("🔄 运行fused...")
+    print("Running fused...")
     IndexMask.copy_(index_mask_template)
     fused_launcher()
     
@@ -363,7 +363,7 @@ def main():
     print("Checking Subgraph Output Boundaries")
     print("=" * 70)
     
-    print(f"\n📦 所有中间tensor keys:")
+    print(f"\nIntermediate tensor keys:")
     for key in sorted(intermediate_tensors.keys()):
         val = intermediate_tensors[key]
         if torch.is_tensor(val):
@@ -542,7 +542,7 @@ def main():
     # -------------------------------------------------------------
     mha_subgraph = best_partition[-1]
     mha_nodes = [n for n in mha_subgraph if isinstance(n, ComputeNode)]
-    print("\n🔍 MHA子图阶段链路调试")
+    print("\nMHA subgraph stage debug")
     # 收集期望baseline阶段结果
     baseline_scores = Q_mha @ K_mha.transpose(-2, -1)
     baseline_scaled = baseline_scores * scale
@@ -587,7 +587,7 @@ def main():
     add_mask_output = find_tensor(add_mask_node, 'output')
     softmax_input = find_tensor(softmax_node, 'input')
 
-    print("\n   指针匹配:")
+    print("\n   Pointer matching:")
     print(f"      scale.input == gemm.scores ? {ptr(scale_input)==ptr(gemm_scores)}")
     print(f"      add_mask.input == scale.output ? {ptr(add_mask_input)==ptr(scale_output)}")
     print(f"      softmax.input == add_mask.output ? {ptr(softmax_input)==ptr(add_mask_output)}")
@@ -595,13 +595,13 @@ def main():
 
     # 若发现不匹配，输出建议
     if scale_input is not None and gemm_scores is not None and ptr(scale_input)!=ptr(gemm_scores):
-        print("   ⚠ scale 输入未指向 GEMM scores，可能被影子缓冲覆盖")
+        print("   warning: scale input does not point to GEMM scores (may be overwritten by a shadow buffer)")
     if add_mask_input is not None and scale_output is not None and ptr(add_mask_input)!=ptr(scale_output):
-        print("   ⚠ add_mask 输入未指向 scale 输出，存在指针错配")
+        print("   warning: add_mask input does not point to scale output (pointer mismatch)")
     if softmax_input is not None and add_mask_output is not None and ptr(softmax_input)!=ptr(add_mask_output):
-        print("   ⚠ softmax 输入未指向 add_mask 输出，存在指针错配")
+        print("   warning: softmax input does not point to add_mask output (pointer mismatch)")
     if add_mask_mask is not None and ptr(add_mask_mask)!=ptr(IndexMask):
-        print("   ⚠ add_mask 的 mask 参数未指向 IndexMask，稀疏掩码未生效")
+        print("   warning: add_mask mask argument does not point to IndexMask (sparse mask not applied)")
 
 
     # print("\n" + "=" * 70)

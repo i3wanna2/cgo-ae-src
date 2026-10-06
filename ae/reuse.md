@@ -6,6 +6,8 @@ This document describes how to reuse and customize TileFusion, including changin
 
 TileFusion is implemented on Triton 3.5. It runs on NVIDIA GPUs supported by that release (Ampere and newer), e.g. A100, H100, and H800. Switching among these GPUs needs no extra porting: the same scripts run on any NVIDIA device that can run Triton 3.5.
 
+Do not upgrade the pinned stack. TileFusion uses the Triton 3.5 tree under `/workspace/triton` and PyTorch 2.9.1 in conda `base`. FlashTensor uses a separate `flashtensor` env (PyTorch 2.2.2 and `triton-nightly`). Do not mix the two environments or append to `PYTHONPATH`. Exact package versions are in `README.md`.
+
 ## Inputs
 
 Input tensors are prepared in the workload scripts (e.g. `prepare()` in `triton/tilefusion/models/attn_model.py`). To customize them, change `--seqlen` or edit `prepare()` directly.
@@ -57,3 +59,7 @@ register_kernel(KernelMetadata(
     grid_direction=...,  # which scalar dim pid(0) splits: "0" = pid(0) splits M, "1" = pid(0) splits N. This information is already in grid_template; the field exists only to simplify the current implementation and will be removed. 
 ))
 ```
+
+## Numerical check
+
+Compare the compiled output with PyTorch in the workload script. See `--check` in `triton/tilefusion/models/attn_model.py`.

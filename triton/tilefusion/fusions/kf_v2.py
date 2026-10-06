@@ -197,11 +197,11 @@ def main():
     
     # 使用 get_output_tensors 直接获取输出
     outputs = full_graph.get_output_tensors(intermediate_tensors)
-    print(f"\n获取到的输出: {list(outputs.keys())}")
+    print(f"\nOutputs: {list(outputs.keys())}")
     
     # 验证 attention output
     if "attn_output" in outputs:
-        print("\n验证 Attention Output (gemm_pv):")
+        print("\nCheck Attention Output (gemm_pv):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -211,11 +211,11 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 attn_output")
+        print("\nattn_output not found")
     
     # 验证 Keyformer score output
     if "kf_score" in outputs:
-        print("\n验证 Keyformer Score Output (sum_h2o):")
+        print("\nCheck Keyformer Score Output (sum_h2o):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -225,7 +225,7 @@ def main():
             atol=1e-1
         )
     else:
-        print("\n⚠️  未找到 kf_score")
+        print("\nkf_score not found")
     
     print("\n" + "=" * 70)
     print("Demo Complete!")

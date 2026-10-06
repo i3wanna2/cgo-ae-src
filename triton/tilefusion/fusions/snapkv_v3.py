@@ -188,11 +188,11 @@ def main():
     
     # 使用 get_output_tensors 直接获取输出
     outputs = full_graph.get_output_tensors(intermediate_tensors)
-    print(f"\n获取到的输出: {list(outputs.keys())}")
+    print(f"\nOutputs: {list(outputs.keys())}")
     
     # 验证 attention output
     if "attn_output" in outputs:
-        print("\n验证 Attention Output (gemm_pv):")
+        print("\nCheck Attention Output (gemm_pv):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -202,14 +202,14 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 attn_output")
+        print("\nattn_output not found")
     
     # 验证 SnapKV score sum output
     if "snapkv_sum" in outputs:
         snapkv_sum = outputs["snapkv_sum"]
         if snapkv_sum.shape[-1] == 1 and len(snapkv_sum.shape) == 4:
             snapkv_sum = snapkv_sum.squeeze(-1)
-        print("\n验证 SnapKV Score Sum Output (sum_h2o):")
+        print("\nCheck SnapKV Score Sum Output (sum_h2o):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -219,11 +219,11 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 snapkv_sum")
+        print("\nsnapkv_sum not found")
     
     # 验证 SnapKV score pooled output
     if "snapkv_score" in outputs:
-        print("\n验证 SnapKV Score Pooled Output (avg_pool1d):")
+        print("\nCheck SnapKV Score Pooled Output (avg_pool1d):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -233,7 +233,7 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 snapkv_score")
+        print("\nsnapkv_score not found")
 
     print("\n" + "=" * 70)
     print("Demo Complete!")

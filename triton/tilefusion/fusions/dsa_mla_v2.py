@@ -145,7 +145,7 @@ def main():
     # ========================================================================
     # 构建 ComputeGraph
     # ========================================================================
-    print("\n构建 ComputeGraph...")
+    print("\nBuilding ComputeGraph...")
     graph = ComputeGraph("dsa_mla_graph")
     
     # 添加输入节点: Q, K, Indices, Mask
@@ -222,7 +222,7 @@ def main():
         'scale': scale,
     }
     
-    print("\n开始自动搜索最优拆分...")
+    print("\nSearching for the best split...")
     best_compiled, best_partition, best_time = graph.compile(
         num_warps=num_warps,
         num_stages=num_stages,
@@ -239,7 +239,7 @@ def main():
     # 验证和性能测试
     # ========================================================================
     print("\n" + "=" * 70)
-    print("验证正确性")
+    print("Correctness check")
     print("=" * 70)
     
     fused_args_list, _, output_tensor, intermediate_tensors = \
@@ -266,7 +266,7 @@ def main():
     
     # 使用预分配的输出 tensor
     outputs = graph.outputs
-    print(f"\n获取到的输出: {list(outputs.keys())}")
+    print(f"\nOutputs: {list(outputs.keys())}")
     
     target_output = outputs.get("attn_output")
     if target_output is None:
@@ -278,10 +278,10 @@ def main():
         if target_output is None:
             target_output = output_tensor if isinstance(output_tensor, torch.Tensor) else list(intermediate_tensors.values())[-1]
     
-    print("\n性能对比:")
+    print("\nPerformance comparison:")
     benchmark_performance(torch_baseline_launcher, fused_launcher)
     
-    print("\n正确性验证:")
+    print("\nCorrectness check:")
     validate_correctness(
         torch_baseline_launcher,
         fused_launcher,
@@ -292,7 +292,7 @@ def main():
     )
     
     print("\n" + "=" * 70)
-    print("DSA MLA v2 完成!")
+    print("DSA MLA v2 done!")
     print("=" * 70)
 
 

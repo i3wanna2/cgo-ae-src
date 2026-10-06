@@ -176,11 +176,11 @@ def main():
     
     # 直接使用预分配的输出 tensor
     outputs = full_graph.outputs
-    print(f"\n获取到的输出: {list(outputs.keys())}")
+    print(f"\nOutputs: {list(outputs.keys())}")
     
     # 验证 attention output
     if "attn_output" in outputs:
-        print("\n验证 Attention Output (gemm_pv):")
+        print("\nCheck Attention Output (gemm_pv):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -190,11 +190,11 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 attn_output")
+        print("\nattn_output not found")
     
     # 验证 H2O score output
     if "h2o_score" in outputs:
-        print("\n验证 H2O Score Output (sum_h2o):")
+        print("\nCheck H2O Score Output (sum_h2o):")
         validate_correctness(
             torch_baseline_launcher,
             fused_launcher,
@@ -204,7 +204,7 @@ def main():
             atol=1e-1
         )
     else:
-        print("\n⚠️  未找到 h2o_score")
+        print("\nh2o_score not found")
 
     print("\n" + "=" * 70)
     print("Demo Complete!")

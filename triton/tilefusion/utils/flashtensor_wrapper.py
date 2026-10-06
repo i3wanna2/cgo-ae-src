@@ -48,6 +48,6 @@ def get_flashtensor_ext_path(self, model: str, seqlen: int):
         print(f"run fail: {e.returncode}")
         print(f"error msg: {e.stderr}")
     except Exception as e:
-        print(f"发生未知错误: {e}")
+        print(f"Unexpected error: {e}")
 
     return extracted_file

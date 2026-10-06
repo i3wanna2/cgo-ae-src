@@ -125,7 +125,7 @@ def main():
     
     # 使用预分配的输出 tensor
     outputs = graph.outputs
-    print(f"\n获取到的输出: {list(outputs.keys())}")
+    print(f"\nOutputs: {list(outputs.keys())}")
     
     if "attn_output" in outputs:
         validate_correctness(
@@ -137,7 +137,7 @@ def main():
             atol=1e-2
         )
     else:
-        print("\n⚠️  未找到 attn_output")
+        print("\nattn_output not found")
     
     print("\n" + "=" * 70)
     print("Gemma2 Demo Complete!")
